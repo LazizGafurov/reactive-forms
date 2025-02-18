@@ -1,0 +1,63 @@
+<h2 class="text-blue-600 text-center text-4xl mt-4">Ticket Reservation </h2>
+<form action="#" class="w-1/2 m-auto mt-4" [formGroup]="register">
+    <div class="flex items-end justify-between">
+       <div class="flex flex-col">
+        <label for="name">Name</label>
+        <input id="" formControlName="firstName" placeholder="First Name" class="border p-3 w-80 rounded-md">
+        
+        <span *ngIf="register.get('firstName')?.valid && register.get('firstName')?.touched">Please enter a name.</span>
+       </div>
+       <input formControlName="lastName" id="" placeholder="Last Name" class="border p-3 w-80 rounded-md">
+    </div>
+    <div class="flex flex-col mt-4">
+        <label for="">Mailing address</label>
+        <input formControlName="address1" id="" placeholder="Street Address"  class="border p-3 rounded-md">
+        <input formControlName="address2" id="" placeholder="Street Address Line 2"  class="border p-3 rounded-md mt-4">
+    </div>
+    <div class="flex items-end justify-between mt-4">
+         <input formControlName="city" id="" placeholder="City" class="border p-3 w-80 rounded-md">
+        <input formControlName="region" id="" placeholder="Region" class="border p-3 w-80 rounded-md">
+     </div>
+     <div class="flex items-end justify-between mt-4">
+        <input formControlName="postCode" id="" placeholder="Choose Country " class="border p-3 w-80 rounded-md">
+        <select formControlName="country" class="border p-3 w-80 rounded-md">
+            <option value="Uzbekistan">Uzbekistan</option>
+            <option value="Uzbekistan">Russia</option>
+            <option value="Uzbekistan">Canada</option>
+            <option value="Uzbekistan">USA</option>
+        </select>
+    </div>
+    <div class="flex items-end justify-between mt-4">
+        <div class="flex flex-col">
+            <label for="email">Email Address</label>
+            <input formControlName="email" id="email" placeholder="" class="border p-3 w-80 rounded-md">
+        </div>
+        <div class="flex flex-col">
+            <label for="phone">Contact phone</label>
+            <input formControlName="phone" id="phone" placeholder="### ## ## " class="border p-3 w-80 rounded-md">
+        </div>
+    </div>
+    <div class="flex flex-col mt-4">
+        <label for="donation">Make a Donation</label>
+        <div  class="border p-3 rounded-md mt-4 flex gap-3 justify-between">
+            <div>
+                <input type="radio" formControlName="patron"  id="patron" value="patron">
+            <label for="patron">Patron</label>
+            </div>
+            <p class="font-bold">25$</p>
+        </div>
+        <div  class="border p-3 rounded-md mt-4 flex gap-3 justify-between">
+            <div>
+                <input type="radio" formControlName="sponsor"  id="sponsor" value="sponsor">
+            <label for="sponsor">Sponsor</label>
+            </div>
+            <p class="font-bold">50$</p>
+        </div>
+    </div>
+    <div class="mt-4">
+        <button mat-flat-button color="primary" (click)="onSubmit()">Submit</button>
+    </div>
+    <div class="mt-4">
+        <button mat-flat-button color="accent" (click)="addToCart()">Add to Cart</button> 
+    </div>
+</form>
