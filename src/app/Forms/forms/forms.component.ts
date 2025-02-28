@@ -1,11 +1,11 @@
-import { NgIf } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-forms',
-  imports: [ReactiveFormsModule, NgIf, MatButtonModule],
+  imports: [ReactiveFormsModule, MatButtonModule],
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss',
 })
