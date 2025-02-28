@@ -32,7 +32,9 @@ export class FormsComponent {
   });
 
   onSubmit() {
+    if (this.register.valid) {
     console.log(this.register.value);
+    }
   }
   addToCart() {
     console.log('Item added to cart');}

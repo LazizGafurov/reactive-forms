@@ -1,63 +1,91 @@
-<h2 class="text-blue-600 text-center text-4xl mt-4">Ticket Reservation </h2>
-<form action="#" class="w-1/2 m-auto mt-4" [formGroup]="register">
-    <div class="flex items-end justify-between">
-       <div class="flex flex-col">
-        <label for="name">Name</label>
-        <input id="" formControlName="firstName" placeholder="First Name" class="border p-3 w-80 rounded-md">
-        
-        <span *ngIf="register.get('firstName')?.valid && register.get('firstName')?.touched">Please enter a name.</span>
-       </div>
-       <input formControlName="lastName" id="" placeholder="Last Name" class="border p-3 w-80 rounded-md">
-    </div>
-    <div class="flex flex-col mt-4">
-        <label for="">Mailing address</label>
-        <input formControlName="address1" id="" placeholder="Street Address"  class="border p-3 rounded-md">
-        <input formControlName="address2" id="" placeholder="Street Address Line 2"  class="border p-3 rounded-md mt-4">
-    </div>
-    <div class="flex items-end justify-between mt-4">
-         <input formControlName="city" id="" placeholder="City" class="border p-3 w-80 rounded-md">
-        <input formControlName="region" id="" placeholder="Region" class="border p-3 w-80 rounded-md">
-     </div>
-     <div class="flex items-end justify-between mt-4">
-        <input formControlName="postCode" id="" placeholder="Choose Country " class="border p-3 w-80 rounded-md">
-        <select formControlName="country" class="border p-3 w-80 rounded-md">
-            <option value="Uzbekistan">Uzbekistan</option>
-            <option value="Uzbekistan">Russia</option>
-            <option value="Uzbekistan">Canada</option>
-            <option value="Uzbekistan">USA</option>
-        </select>
-    </div>
-    <div class="flex items-end justify-between mt-4">
-        <div class="flex flex-col">
-            <label for="email">Email Address</label>
-            <input formControlName="email" id="email" placeholder="" class="border p-3 w-80 rounded-md">
-        </div>
-        <div class="flex flex-col">
-            <label for="phone">Contact phone</label>
-            <input formControlName="phone" id="phone" placeholder="### ## ## " class="border p-3 w-80 rounded-md">
-        </div>
-    </div>
-    <div class="flex flex-col mt-4">
-        <label for="donation">Make a Donation</label>
-        <div  class="border p-3 rounded-md mt-4 flex gap-3 justify-between">
-            <div>
-                <input type="radio" formControlName="patron"  id="patron" value="patron">
-            <label for="patron">Patron</label>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-3xl bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-blue-800 text-center text-2xl font-semibold mb-6">Ticket Reservation Form</h2>
+        <form [formGroup]="register">
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="firstname"  class="block text-sm font-medium">First Name</label>
+                    <input formControlName="firstname" id="firstname" type="text" class="w-full border p-2 rounded-md  border-gray-700 px-4" placeholder="First">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium">Last Name</label>
+                    <input type="text" class="w-full border p-2 rounded-md border-gray-700 px-4" placeholder="Last">
+                </div>
             </div>
-            <p class="font-bold">25$</p>
-        </div>
-        <div  class="border p-3 rounded-md mt-4 flex gap-3 justify-between">
-            <div>
-                <input type="radio" formControlName="sponsor"  id="sponsor" value="sponsor">
-            <label for="sponsor">Sponsor</label>
+            
+            <label class="block text-sm font-medium">Mailing Address</label>
+            <input type="text" class="w-full border p-2 rounded-md border-gray-700 mb-2 px-4" placeholder="Street Address">
+            <input type="text" class="w-full border p-2 rounded-md border-gray-700 mb-2 px-4" placeholder="Street Address Line 2">
+            
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <input type="text" class="w-full border p-2 rounded-md border-gray-700 px-4" placeholder="City">
+                <input type="text" class="w-full border p-2 rounded-md border-gray-700 px-4" placeholder="Region">
             </div>
-            <p class="font-bold">50$</p>
-        </div>
+            
+            <div class="grid grid-cols-2 gap-4 mb-4 ">
+                <input type="text" class="w-full border p-2 rounded-md border-gray-700 px-4" placeholder="Postal / Zip Code">
+                <select class="w-full border p-2 rounded-md border-gray-700 px-4 ">
+                    <option>Country</option>
+                    <option>Uzbekistan</option>
+                    <option>Russia</option>
+                    <option>Canada</option>
+                    <option>USA</option>
+                </select>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium">Email Address</label>
+                     <input type="email" formControlName="email" class="w-full border p-2 rounded-md border-gray-700" placeholder="Enter your email">
+                     @if (register.get('email')?.touched && register.get('email')?.invalid) {
+                      Ma'lumotingni to'g'ri kirit 
+                     }
+                </div>
+                <div>
+                    <label class="block text-sm font-medium">Contact Phone</label>
+                    <input type="tel" class="w-full border p-2 rounded-md border-gray-700 px-4" placeholder="### ### ####">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <p class="font-bold">Adult</p>
+                    <p class="text-lg">$25.00</p>
+                    <div class="flex items-center gap-2 mt-2">
+                        <input type="number" class="w-16 border p-2 rounded-md border-gray-700 text-center " value="1">
+                        <button class="bg-blue-800 text-white px-4 py-2 rounded-md w-full">Add to cart</button>
+                    </div>
+                </div>
+                <div>
+                    <p class="font-bold">Children & Students</p>
+                    <p class="text-lg">$15.00</p>
+                    <div class="flex items-center gap-2 mt-2">
+                        <input type="number" class="w-16 border p-2 rounded-md border-gray-700 text-center" value="1">
+                        <button class="bg-blue-800 text-white px-4 py-2 rounded-md w-full">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="font-bold">Make a Donation</p>
+            <div class="border p-3 rounded-md border-gray-700 flex justify-between items-center mt-2">
+                <div class="flex items-center gap-2">
+                    <input id="radio1" type="radio" name="donation" value="patron">
+                    <label for="radio1">Patron</label>
+                </div>
+                <p class="font-bold">$25.00</p>
+            </div>
+            <div class="border p-3 rounded-md  border-gray-700 flex justify-between items-center mt-2">
+                <div class="flex items-center gap-2">
+                    <input id="radio2" type="radio" name="donation" value="sponsor">
+                    <label for="radio2">Sponsor</label>
+                </div>
+                <p class="font-bold">$50.00</p>
+            </div>
+            
+            <div class="flex justify-end mt-4 gap-4">
+                <button [disabled]="register.invalid" type="submit" class="bg-blue-800 text-white px-4 py-2 rounded-md">Submit</button>
+                <button class="bg-blue-800 text-white px-4 py-2 rounded-md">Add to Cart</button>
+            </div>
+        </form>
     </div>
-    <div class="mt-4">
-        <button mat-flat-button color="primary" (click)="onSubmit()">Submit</button>
-    </div>
-    <div class="mt-4">
-        <button mat-flat-button color="accent" (click)="addToCart()">Add to Cart</button> 
-    </div>
-</form>
+</body>
